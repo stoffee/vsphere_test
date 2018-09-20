@@ -23,13 +23,15 @@ data "vsphere_network" "network" {
 }
 
 resource "vsphere_virtual_machine" "vm" {
-  name             = "terraform-test"
+  name             = "terraform-roger"
   resource_pool_id = "${data.vsphere_resource_pool.pool.id}"
   datastore_id     = "${data.vsphere_datastore.datastore.id}"
 
   num_cpus = 2
   memory   = 1024
   guest_id = "other3xLinux64Guest"
+  wait_for_guest_net_routable = false
+  wait_for_guest_net_timeout  = 0
 
   network_interface {
     network_id = "${data.vsphere_network.network.id}"
