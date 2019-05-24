@@ -27,7 +27,7 @@ resource "vsphere_virtual_machine" "vm" {
   resource_pool_id = "${data.vsphere_resource_pool.pool.id}"
   datastore_id     = "${data.vsphere_datastore.datastore.id}"
 
-  num_cpus = 1
+  num_cpus = 2
   memory   = 1024
   guest_id = "other3xLinux64Guest"
   wait_for_guest_net_routable = false
